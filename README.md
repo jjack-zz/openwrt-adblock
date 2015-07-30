@@ -9,7 +9,17 @@ wget --no-check-certificate https://raw.githubusercontent.com/jjack/openwrt-adbl
 chmod +x /etc/adblock.sh
 ```
 
-* Run it.
+* Tell dnsmasq to use the hosts that adblock.sh generates.
+* If you have LuCI, Network > DHCP and DNS > Resolv and Hosts Files > Additional Hosts files
+```
+/tmp/block.hosts
+```
+* If you don't, add the following to /etc/config/dhcp under 'config dnsmasq'
+```
+list addnhosts '/tmp/block.hosts'
+```
+
+* Run the adblock script.
 ```
 /etc/adblock.sh
 ```
