@@ -25,7 +25,7 @@ do
     wget -qO- "${URL}" | grep -v -e "^#" -e "^$" -e localhost | sed -E -e "s/^127.0.0.1/0.0.0.0/" -e "s/#.*$//" -e "s/\t/ /" -e "s/[[:space:]]{2,}/ /" | tr -d "\r" >> ${TMP_HOSTS}
 
 # this does all of that, plus it adds an entry for ipv6 using ::1 as the address...
-# but it also has the side effect of making dnsmasq crash every 10 - 120 minutes
+# but it also has the side effect of making dnsmasq crash every 10 - 120 minutes on my wrt1900ac
 #    wget -qO- "${URL}" | grep -v -e "^#" -e "^$" -e localhost | sed -E -e "s/^127.0.0.1/0.0.0.0/" -e "s/#.*$//" -e "s/\t/ /" -e "s/  / /" -e "s/ (.+)/ \1\n::1 \1/" | tr -d "\r" >> ${TMP_HOSTS}
 
 done
