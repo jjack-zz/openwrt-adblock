@@ -35,4 +35,4 @@ sort ${TMP_HOSTS} | uniq > ${HOSTS}
 
 rm ${TMP_HOSTS} 2> /dev/null
 
-/etc/init.d/dnsmasq restart
+killall -s SIGHUP dnsmasq
