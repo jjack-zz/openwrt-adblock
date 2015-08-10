@@ -22,7 +22,7 @@ do
     # replace double+ spaces with single spaces
     # remove carriage returns
     # append the results to TMP_HOSTS
-    wget -qO- "${URL}" | grep -v -e "^#" -e "^\s*$" -e localhost | sed -E -e "s/^127.0.0.1/0.0.0.0/" -e "s/#.*$//" -e "s/\t/ /" -e "s/[[:space:]]{2,}/ /" | tr -d "\r" >> ${TMP_HOSTS}
+    wget -qO- "${URL}" | grep -v -e "^#" -e "^\s*$" -e "\blocalhost\b" | sed -E -e "s/^127.0.0.1/0.0.0.0/" -e "s/#.*$//" -e "s/\t/ /" -e "s/[[:space:]]{2,}/ /" | tr -d "\r" >> ${TMP_HOSTS}
 
 # this does all of that, plus it adds an entry for ipv6 using ::1 as the address...
 # but it also has the side effect of making dnsmasq crash every 10 - 120 minutes on my wrt1900ac
